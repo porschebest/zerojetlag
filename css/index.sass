@@ -27,8 +27,8 @@ $color_blue_dark: #10316B
 @mixin title
   color: $color_blue_dark
   +center
-  padding-top: 10%
-  padding-bottom: 5%
+  padding-top: 7%
+  padding-bottom: 3%
 @mixin section
   width: 100%
   height: 640px
@@ -80,9 +80,62 @@ $color_blue_dark: #10316B
 .section
   +section
 .corp-logo
-  +w(300px)
+  +w(250px)
   +mid
   +ab
 .card
   +h(150px)
-  border: 0px
+
+
+/* hot */
+#hot
+  +bg($color_white)
+.hot
+  margin-left: 4%
+.hot-card
+  +center
+  +h(400px)
+  +w(280px)
+.card-title
+  +center
+  +c($color_blue_dark)
+.card-text
+  +mid(12%)
+  +ab
+.card1
+  +bg($color_orange)
+  +c($color_blue_dark)
+  +h(100px)
+.card2
+  +bg($color_blue_dark)
+  +c($color_white)
+  +h(100px)
+.card3
+  +bg($color_blue)
+  +c($color_white)
+  +h(100px)
+.hot-text
+  +mid(70%)
+  +ab
+.hot-corp-logo
+  +w(200px)
+  +mid(50%)
+  +ab
+/* hot btn */
+.hot-btn
+  +w(200px)
+  +h(45px)
+  +mid(90%)
+  +ab
+.hot-btn a
+  +a($color_white)
+  +center
+  +mid
+  +ab
+  +c($color_white)
+.hot-btn1
+  +bg($color_orange)
+.hot-btn2
+  +bg($color_blue_dark)
+.hot-btn3
+  +bg($color_blue)
