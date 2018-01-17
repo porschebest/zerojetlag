@@ -20,6 +20,10 @@ $color_blue_dark: #10316B
   left: 50%
   transform: translateX(-50%) translateY(-50%)
   top: $t
+@mixin midx($t: 50%)
+  left: 50%
+  transform: translateX(-50%)
+  top: $t
 @mixin center
   text-align: center
 @mixin c($c)
@@ -30,6 +34,7 @@ $color_blue_dark: #10316B
   padding-top: 7%
   padding-bottom: 3%
 @mixin section
+  margin-top: 0
   width: 100%
   height: 640px
 /* nav bar */
@@ -48,7 +53,7 @@ $color_blue_dark: #10316B
 /* header */
 .header-img
   +w(100%)
-  +h(720px)
+  +h(640px)
   position: relative
 .tag-line
   +mid(60%)
@@ -60,7 +65,7 @@ $color_blue_dark: #10316B
   +ab
   +bg(rgba(16,49,107,0.55))
   +w(100%)
-  +h(720px)
+  +h(640px)
   z-index: 5
 
 /* search */
@@ -85,6 +90,9 @@ $color_blue_dark: #10316B
   +ab
 .card
   +h(150px)
+.corp-card
+  border: 0px
+
 
 
 /* hot */
@@ -94,7 +102,7 @@ $color_blue_dark: #10316B
   margin-left: 4%
 .hot-card
   +center
-  +h(400px)
+  +h(350px)
   +w(280px)
 .card-title
   +center
@@ -115,17 +123,17 @@ $color_blue_dark: #10316B
   +c($color_white)
   +h(100px)
 .hot-text
-  +mid(70%)
+  +mid(65%)
   +ab
 .hot-corp-logo
   +w(200px)
-  +mid(50%)
+  +mid(45%)
   +ab
 /* hot btn */
 .hot-btn
   +w(200px)
   +h(45px)
-  +mid(90%)
+  +mid(85%)
   +ab
 .hot-btn a
   +a($color_white)
@@ -139,3 +147,26 @@ $color_blue_dark: #10316B
   +bg($color_blue_dark)
 .hot-btn3
   +bg($color_blue)
+
+/* resume */
+.resume-title, .resume-text
+  +center
+  +c($color_white)
+  +ab
+  +midx(300%)
+  z-index: 15
+.resume-text
+  +midx(330%)
+.resume-btn
+  +w(200px)
+  +h(45px)
+  +midx(350%)
+  +bg($color_orange)
+  +ab
+  z-index: 15
+.resume-btn a
+  +a($color_white)
+  +center
+  +mid
+  +ab
+  +c($color_white)
