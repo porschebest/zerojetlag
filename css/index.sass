@@ -1,0 +1,61 @@
+$color_orange: #FDBE34
+$color_blue: #0B409C
+$color_white: #FAFAFA
+$color_blue_dark: #10316B
+
+@mixin a($c:$color_white)
+  text-decoration: none
+  color: $c
+@mixin bg($c: $color_white)
+  background-color: $c
+@mixin w($w)
+  width: $w
+@mixin h($h)
+  height: $h
+@mixin ab
+  position: absolute
+@mixin mid
+  left: 50%
+  transform: translateX(-50%)
+@mixin center
+  text-align: center
+@mixin c($c)
+  color: $c
+
+.logo
+  +h(84px)
+  +a($color_blue_dark)
+.login
+  +bg($color_orange)
+  color: $color_blue_dark
+  border-radius: 28px
+.nav-link
+  +w(56px)
+  +center
+.header-img
+  +w(100%)
+  +h(720px)
+  position: relative
+.tag-line
+  +mid
+  +ab
+  +center
+  z-index: 15
+  top: 55%
+  color: $color_white
+.veil
+  +ab
+  +bg(rgba(16,49,107,0.55))
+  +w(100%)
+  +h(720px)
+  z-index: 5
+.search
+  +ab
+  +mid
+  +w(30%)
+  top: 75%
+  z-index: 10
+  border-radius: 0px
+.btn-search
+  +bg($color_orange)
+  +c($color_white)
