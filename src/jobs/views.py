@@ -35,5 +35,5 @@ class ContactView(View):
     def get(self, request, *args, **kwargs):
         context = {}
         return render(request, "contact.html", context)
-class ContactView(TemplateView):
+class ContactTemplateView(TemplateView):
     template_name = 'contact.html'
