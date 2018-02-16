@@ -31,9 +31,23 @@ def contact(request):
     }
     return render(request, "contact.html", context)
 
-class ContactView(View):
-    def get(self, request, *args, **kwargs):
-        context = {}
-        return render(request, "contact.html", context)
-class ContactTemplateView(TemplateView):
-    template_name = 'contact.html'
+# class based view pre-define
+class HomeView(TemplateView):
+    template_name = 'home.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(HomeView, self).get_context_data(*args, **kwargs)
+        num = None
+        some_list = [
+            random.randint(0, 10000),
+            random.randint(0, 10000),
+            random.randint(0, 10000)
+        ]
+        conditional_bool_item = True
+        if conditional_bool_item:
+            num = random.randint(0, 10000)
+        context = {
+            "num": num,
+            "some_list": some_list
+        }
+        return context
