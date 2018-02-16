@@ -21,6 +21,7 @@ from jobs.views import HomeView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view()),
-    url(r'^about/$', TemplateView.as_view(template_name='about.html')), # if no extra context
+    # if no extra context
+    url(r'^about/$', TemplateView.as_view(template_name='about.html')),
     url(r'^contact/$', TemplateView.as_view(template_name='contact.html')),
 ]
