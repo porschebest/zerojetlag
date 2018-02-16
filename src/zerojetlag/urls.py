@@ -15,11 +15,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from jobs.views import home, about, contact
+from jobs.views import home, about, contact, ContactView, ContactTemplateView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^about/$', about),
-    url(r'^contact/$', contact)
+    url(r'^contact/$', ContactTemplateView.as_view()),
 ]
