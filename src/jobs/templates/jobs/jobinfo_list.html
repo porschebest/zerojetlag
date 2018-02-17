@@ -1,0 +1,10 @@
+{% extends "base.html"%}
+{% block head_title  %}Jobs || {{block.super}}{% endblock head_title %}
+{% block content %}
+<h1>Jobs Lists</h1>
+<ul>
+  {% for obj in object_list %}
+  <li>{{ obj.JobTitle }} {{ obj.Company }} <br> {{ obj.Category }} <br> {{ obj.Timestamp }}{{ obj.Updated }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}

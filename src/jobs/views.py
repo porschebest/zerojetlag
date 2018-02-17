@@ -1,52 +1,29 @@
-import random
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import TemplateView
-# Create your views here.
-# Function based views
-def home(request):
-    num = None
-    some_list = [
-        random.randint(0, 10000),
-        random.randint(0, 10000),
-        random.randint(0, 10000)
-    ]
-    conditional_bool_item = False
-    if conditional_bool_item:
-        num = random.randint(0, 10000)
+from django.views.generic import TemplateView, ListView
+
+from .models import JobInfo
+
+def jobs_listview(request):
+    template_name = 'jobs/jobs_list.html'
+    queryset = JobInfo.objects.all()
     context = {
-        "num": num,
-        "some_list": some_list
+        "object_list": queryset
     }
-    return render(request, "home.html", context)
+    return render(request, template_name, context)
 
-def about(request):
-    context = {
-    }
-    return render(request, "about.html", context)
-
-def contact(request):
-    context = {
-    }
-    return render(request, "contact.html", context)
-
-# class based view pre-define
-class HomeView(TemplateView):
-    template_name = 'home.html'
-
-    def get_context_data(self, *args, **kwargs):
-        context = super(HomeView, self).get_context_data(*args, **kwargs)
-        num = None
-        some_list = [
-            random.randint(0, 10000),
-            random.randint(0, 10000),
-            random.randint(0, 10000)
-        ]
-        conditional_bool_item = True
-        if conditional_bool_item:
-            num = random.randint(0, 10000)
-        context = {
-            "num": num,
-            "some_list": some_list
-        }
-        return context
+class JobListView(ListView):
+    # template_name = 'jobs/jobs_list.html'
+    def get_queryset(self):
+        print(self.kwargs)
+        slug = self.kwargs.get("slug")
+        if slug:
+            queryset = JobInfo.objects.filter(
+                Q(Category__iexact=slug) | Q(Category__icontains=slug) |
+                Q(Company__iexact=slug)  | Q(Company__icontains=slug)  |
+                Q(JobTitle__iexact=slug) | Q(JobTitle__icontains=slug)
+            )
+        else:
+            queryset = JobInfo.objects.all()
+        return queryset
