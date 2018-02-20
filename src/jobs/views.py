@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.views.generic import TemplateView, ListView
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import TemplateView, ListView, DetailView
 
 from .models import JobInfo
 
@@ -27,3 +27,14 @@ class JobListView(ListView):
         else:
             queryset = JobInfo.objects.all()
         return queryset
+class JobDetailView(DetailView):
+    queryset = JobInfo.objects.all()
+    def get_context_data(self, *args, **kwargs):
+        print(self.kwargs)
+        context = super(JobDetailView, self).get_context_data(*args, **kwargs)
+        print(context)
+        return context
+    def get_object(self, *args, **kwargs):
+        job_id = self.kwargs.get('job_id')
+        obj = get_object_or_404(JobInfo, id=job_id) # pk = job_id
+        return obj

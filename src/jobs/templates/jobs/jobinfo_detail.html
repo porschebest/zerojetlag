@@ -1,0 +1,9 @@
+{% extends "base.html"%}
+{% block head_title  %}Jobs || {{block.super}}{% endblock head_title %}
+{% block content %}
+<h1>Jobs Info</h1>
+<h2>{{ object.JobTitle }}</h2>
+<small>{{ object.category }}</small>
+<p>{{ object.Timestamp }} , Updated {{ object.Updated|timesince }} ago</p>
+<p>{{ object.JobDescription }}</p>
+{% endblock %}
